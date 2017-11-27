@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/eliasson/Programmering/american_beaver/deb-packages/generic/ab-users'
+let g:netrw_dirhist_2='/home/eliasson/Programmering/MSC_EAPI_RELEASE_20140422_V1_4_0/src/gpl/mscio_driver/src'
+let g:netrw_dirhist_3='/home/eliasson/Programmering/quickrdp_deb/quickrdp-2.3/debian/source'
+let g:netrw_dirhist_4='/home/eliasson/Programmering/debconf_example/debian'
+let g:netrw_dirhist_5='/home/eliasson/Programmering/g3_trunk/application/vr_sensor/x86_64'
+let g:netrw_dirhist_6='/disks/sdc/home/arnestig/programmering/dhcrawl/src'
+let g:netrw_dirhist_7='/etc/apache2/mods-enabled'

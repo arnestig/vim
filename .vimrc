@@ -23,6 +23,7 @@ noremap <F10> :call NERDComment(0,"toggle")<CR>
 noremap <F11> :A<CR>
 noremap <F12> :NERDTreeToggle<CR>
 noremap <f2> za
+set tags=./tags;,tags;
 set ignorecase
 set smartcase
 set smartindent

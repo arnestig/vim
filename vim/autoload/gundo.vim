@@ -44,10 +44,16 @@ if !exists("g:gundo_close_on_revert")"{{{
     let g:gundo_close_on_revert = 0
 endif"}}}
 if !exists("g:gundo_prefer_python3")"{{{
-    let g:gundo_prefer_python3 = 0
+    let g:gundo_prefer_python3 = 1
 endif"}}}
 if !exists("g:gundo_auto_preview")"{{{
     let g:gundo_auto_preview = 1
+endif"}}}
+if !exists("g:gundo_playback_delay")"{{{
+    let g:gundo_playback_delay = 60
+endif"}}}
+if !exists("g:gundo_return_on_revert")"{{{
+    let g:gundo_return_on_revert = 1
 endif"}}}
 
 let s:has_supported_python = 0
@@ -55,6 +61,8 @@ if g:gundo_prefer_python3 && has('python3')"{{{
     let s:has_supported_python = 2
 elseif has('python')"
     let s:has_supported_python = 1
+elseif has('python3')"
+    let s:has_supported_python = 2
 endif
 
 if !s:has_supported_python
@@ -277,10 +285,10 @@ endfunction"}}}
 function! s:GundoOpen()"{{{
     if !exists('g:gundo_py_loaded')
         if s:has_supported_python == 2 && g:gundo_prefer_python3
-            exe 'py3file ' . s:plugin_path . '/gundo.py'
+            exe 'py3file ' . escape(s:plugin_path, ' ') . '/gundo.py'
             python3 initPythonModule()
         else
-            exe 'pyfile ' . s:plugin_path . '/gundo.py'
+            exe 'pyfile ' . escape(s:plugin_path, ' ') . '/gundo.py'
             python initPythonModule()
         endif
 

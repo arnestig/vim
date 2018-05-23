@@ -6,6 +6,7 @@ set expandtab
 filetype plugin on
 hi link Repeat Statement
 colorscheme slate
+noremap <f1> :SyntasticCheck<CR>
 noremap <f3> :syn clear Repeat <Bar> g/^\(.*\)\n\ze\%(.*\n\)*\1$/exe 'syn match Repeat "^' . escape(getline('.'), '".\^$*[]') . '$"' <Bar> nohlsearch <CR> <CR>
 noremap <f4> :execute "vimgrep /" .expand("<cword>") . "/j **" <Bar> cw<CR>
 noremap <S-f5> :call VimgrepInput() <CR>
@@ -13,7 +14,8 @@ nnoremap <F5> :GundoToggle<CR>
 vnoremap <S-f6> :'<,'>%!xxd<CR>
 nnoremap <f6> :%!astyle -H -D -A3 --indent=spaces=4<CR><C-o>
 "nnoremap <f6> :%!astyle -H -U -A1 --indent=spaces=3<CR><C-o>
-nnoremap <f7> :!ctags -R *<CR><CR>
+"nnoremap <f7> :!ctags -R *<CR><CR>
+nnoremap <f7> :call CtagsGitPath()<CR>
 nmap <F8> :TagbarToggle<CR>
 noremap <f9> :!%:p<CR>
 noremap <S-f9> :!sudo %:p<CR>
@@ -55,5 +57,18 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_w = 0
+let g:syntastic_cpp_include_dirs = [ '/usr/include/x86_64-linux-gnu/qt5', '/usr/include/x86_64-linux-gnu/qt5/QtCore', 'external', '/usr/include/x86_64-linux-gnu/qt5/QtGui' ]
+let g:syntastic_cpp_compiler_options = '-fPIC'
+let g:syntastic_mode_map = { "mode": "passive" }
 
 source ~/.vim/vimrc/vimgrep.vim
+source ~/.vim/vimrc/ctags_git.vim

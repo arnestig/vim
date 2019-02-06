@@ -3,6 +3,7 @@ set number
 set numberwidth=5
 set shiftwidth=4
 set expandtab
+set tabpagemax=100
 filetype plugin on
 hi link Repeat Statement
 colorscheme slate
@@ -67,9 +68,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_w = 0
-let g:syntastic_cpp_include_dirs = [ '/usr/include/x86_64-linux-gnu/qt5', '/usr/include/x86_64-linux-gnu/qt5/QtCore', 'external', '/usr/include/x86_64-linux-gnu/qt5/QtGui' ]
+let g:syntastic_cpp_include_dirs = [ '/usr/include/x86_64-linux-gnu/qt5', '/usr/include/x86_64-linux-gnu/qt5/QtCore', 'external', '/usr/include/x86_64-linux-gnu/qt5/QtGui', '/usr/include/x86_64-linux-gnu/qt5/QtNetwork' ]
 let g:syntastic_cpp_compiler_options = '-fPIC'
 let g:syntastic_mode_map = { "mode": "passive" }
+
+vnoremap p "_dP
 
 source ~/.vim/vimrc/vimgrep.vim
 source ~/.vim/vimrc/ctags_git.vim

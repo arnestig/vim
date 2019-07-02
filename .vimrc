@@ -34,6 +34,7 @@ noremap <F10> :call NERDComment(0,"toggle")<CR>
 noremap <F11> :A<CR>
 noremap <F12> :NERDTreeToggle<CR>
 noremap <f2> za
+set wildignore+=tags,*.o,*.avi,*.img,*.a,*.so,*.jpg
 set tags=./tags;,tags;
 set ignorecase
 set smartcase
@@ -81,6 +82,7 @@ let g:syntastic_check_on_w = 0
 let g:syntastic_cpp_include_dirs = [ '/usr/include/x86_64-linux-gnu/qt5', '/usr/include/x86_64-linux-gnu/qt5/QtCore', 'external', '/usr/include/x86_64-linux-gnu/qt5/QtGui', '/usr/include/x86_64-linux-gnu/qt5/QtNetwork' ]
 let g:syntastic_cpp_compiler_options = '-fPIC'
 let g:syntastic_mode_map = { "mode": "passive" }
+let g:ycm_auto_trigger = 0
 
 hi DiffChange ctermbg=95
 if &diff

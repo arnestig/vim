@@ -1,3 +1,13 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ycm-core/YouCompleteMe'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 set ts=4
 set number
 set numberwidth=5
@@ -8,7 +18,7 @@ filetype plugin on
 hi link Repeat Statement
 colorscheme slate
 noremap <f1> :SyntasticCheck<CR>
-noremap <f3> :syn clear Repeat <Bar> g/^\(.*\)\n\ze\%(.*\n\)*\1$/exe 'syn match Repeat "^' . escape(getline('.'), '".\^$*[]') . '$"' <Bar> nohlsearch <CR> <CR>
+noremap <f3> :%s/\s\+$//e<CR>
 noremap <f4> :execute "vimgrep /" .expand("<cword>") . "/j **" <Bar> cw<CR>
 noremap <S-f5> :call VimgrepInput() <CR>
 nnoremap <F5> :GundoToggle<CR>
@@ -34,7 +44,7 @@ let g:gundo_close_on_revert = 1
 let g:gundo_preview_bottom = 1
 syntax on
 hi Pmenu ctermbg=1 ctermfg=0
-hi PmenuSel ctermbg=1 ctermfg=8
+hi PmenuSel ctermbg=1 ctermfg=15
 set noswapfile
 set completeopt=menu,menuone,longest
 set pumheight=15
@@ -71,6 +81,11 @@ let g:syntastic_check_on_w = 0
 let g:syntastic_cpp_include_dirs = [ '/usr/include/x86_64-linux-gnu/qt5', '/usr/include/x86_64-linux-gnu/qt5/QtCore', 'external', '/usr/include/x86_64-linux-gnu/qt5/QtGui', '/usr/include/x86_64-linux-gnu/qt5/QtNetwork' ]
 let g:syntastic_cpp_compiler_options = '-fPIC'
 let g:syntastic_mode_map = { "mode": "passive" }
+
+hi DiffChange ctermbg=95
+if &diff
+    syntax off
+endif
 
 vnoremap p "_dP
 

@@ -17,7 +17,7 @@ set tabpagemax=100
 filetype plugin on
 hi link Repeat Statement
 colorscheme slate
-noremap <f1> :SyntasticCheck<CR>
+noremap <f1> :YcmCompleter FixIt<CR>
 noremap <f3> :%s/\s\+$//e<CR>
 noremap <f4> :execute "vimgrep /" .expand("<cword>") . "/j **" <Bar> cw<CR>
 noremap <S-f5> :call VimgrepInput() <CR>
@@ -28,6 +28,7 @@ nnoremap <f6> :%!astyle -H -D -A3 --indent=spaces=4<CR><C-o>
 "nnoremap <f7> :!ctags -R *<CR><CR>
 nnoremap <f7> :call CtagsGitPath()<CR>
 nmap <F8> :TagbarToggle<CR>
+vnoremap <C-r> "hy:%s!<C-r>h!!gc<left><left><left>
 noremap <f9> :!%:p<CR>
 noremap <S-f9> :!sudo %:p<CR>
 noremap <F10> :call NERDComment(0,"toggle")<CR>
@@ -83,7 +84,10 @@ let g:syntastic_cpp_include_dirs = [ '/usr/include/x86_64-linux-gnu/qt5', '/usr/
 let g:syntastic_cpp_compiler_options = '-fPIC'
 let g:syntastic_mode_map = { "mode": "passive" }
 let g:ycm_auto_trigger = 0
+let hlstate=0
+nnoremap <c-c> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<cr>
 
+hi Search cterm=NONE ctermfg=yellow ctermbg=red
 hi DiffChange ctermbg=95
 if &diff
     syntax off
